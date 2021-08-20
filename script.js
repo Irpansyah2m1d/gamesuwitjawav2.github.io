@@ -1,3 +1,49 @@
+const awal = new Date(0).getTime();
+const tujuan = new Date(300000).getTime();
+
+let selisih = tujuan - awal;
+
+// let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+// let detik = Math.floor((selisih % (1000 * 60)) / 1000);
+// console.log("menit :" + menit);
+// console.log("detik :" + detik);
+function mulai() {
+  setInterval(function () {
+    selisih = selisih - 1000;
+    // let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+    // let detik = Math.floor((selisih % (1000 * 60)) / 1000);
+    let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+    let detik = Math.floor((selisih % (1000 * 60)) / 1000);
+    // console.log("menit :" + menit);
+    // console.log("detik :" + detik);
+    const getWaktu = document.querySelector(".waktu");
+    getWaktu.innerHTML = menit + " : " + detik;
+
+    if (detik < 10) {
+      getWaktu.innerHTML = menit + " : " + "0" + detik;
+    }
+    if (selisih == 0) {
+      clearInterval;
+      alert("waktu habis");
+    }
+
+    // console.log(selisih);
+  }, 1000);
+}
+
+const tStart = document.querySelector(".mulai span.tmulai");
+
+tStart.addEventListener("click", function () {
+  const container = document.getElementsByClassName("container");
+  const h1 = document.getElementById("icon");
+  const alert = document.querySelector(".alert");
+  const mulai = document.querySelector(".mulai");
+  mulai.style.display = "none";
+  alert.style.display = "none";
+  h1.classList.remove("blur");
+  container[0].classList.remove("blur");
+});
+
 function getPilihanKomputer() {
   // Tangkap Inputan Komputer
   const komp = Math.random();
@@ -46,30 +92,8 @@ function putar() {
   }, 80);
 }
 
-// function score(itu) {
-//   // const pilkom = getPilihanKomputer();
-//   // const pilplay = play.className;
-//   // const hasil = getHasil(pilkom, pilplay);
-//   let pScore = 0;
-//   let kScore = 0;
-//   if (itu == "MENANG") {
-//     pScore++;
-//     // console.log("Score Komputer : " + kScore);
-//   } else if (itu == "KALAH") {
-//     kScore++;
-//   } else {
-//     pScore = pScore + 0;
-//     kScore = kScore + 0;
-//   }
-
-//   console.log(pScore);
-//   console.log(kScore);
-
-//   // setInterval(score, 80);
-//   // clearInterval;
-// }
-
 const pPlayer = document.querySelectorAll(".area-player ul li img");
+
 const info = document.querySelector(".info");
 let pScore = 0;
 let kScore = 0;
@@ -81,6 +105,7 @@ pPlayer.forEach(function (play) {
     const hasil = getHasil(pilkom, pilplay);
 
     putar();
+    mulai();
     setTimeout(function () {
       info.style.backgroundColor = "white";
       info.innerHTML = hasil;
@@ -102,6 +127,9 @@ pPlayer.forEach(function (play) {
     }, 2000);
   });
 });
+
+// const waktuMulai = new Date("Mar 8, 2021 10:00:00").getTime();
+// waktuTujuan = new Date("Mar 8, 2021 10:05:00");
 
 // pPlayer.forEach((coba) => {
 //   coba.addEventListener("click", function () {
