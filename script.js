@@ -3,37 +3,11 @@ const tujuan = new Date(300000).getTime();
 
 let selisih = tujuan - awal;
 
-// let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
-// let detik = Math.floor((selisih % (1000 * 60)) / 1000);
-// console.log("menit :" + menit);
-// console.log("detik :" + detik);
-function mulai() {
-  setInterval(function () {
-    selisih = selisih - 1000;
-    // let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
-    // let detik = Math.floor((selisih % (1000 * 60)) / 1000);
-    let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
-    let detik = Math.floor((selisih % (1000 * 60)) / 1000);
-    // console.log("menit :" + menit);
-    // console.log("detik :" + detik);
-    const getWaktu = document.querySelector(".waktu");
-    getWaktu.innerHTML = menit + " : " + detik;
-
-    if (detik < 10) {
-      getWaktu.innerHTML = menit + " : " + "0" + detik;
-    }
-    if (selisih == 0) {
-      clearInterval;
-      alert("waktu habis");
-    }
-
-    // console.log(selisih);
-  }, 1000);
-}
-
 const tStart = document.querySelector(".mulai span.tmulai");
 
-tStart.addEventListener("click", function () {
+tStart.addEventListener("click", mulai);
+
+function mulai() {
   const container = document.getElementsByClassName("container");
   const h1 = document.getElementById("icon");
   const alert = document.querySelector(".alert");
@@ -42,7 +16,32 @@ tStart.addEventListener("click", function () {
   alert.style.display = "none";
   h1.classList.remove("blur");
   container[0].classList.remove("blur");
-});
+  waktu();
+}
+
+function waktu() {
+  const hitung = setInterval(function () {
+    selisih = selisih - 1000;
+    let menit = Math.floor((selisih % (1000 * 60 * 60)) / (1000 * 60));
+    let detik = Math.floor((selisih % (1000 * 60)) / 1000);
+    const getWaktu = document.querySelector(".waktu");
+    getWaktu.innerHTML = menit + " : " + detik;
+    if (selisih === 0) {
+      clearInterval(hitung);
+      // console.log("waktu habis");
+      alert("Waktu Anda Habis!!!");
+      // let cek = confirm("Mau Main Lagi?");
+
+      // if (cek === true) {
+      //   mulai();
+      // }
+    }
+
+    if (detik < 10) {
+      getWaktu.innerHTML = menit + " : " + "0" + detik;
+    }
+  }, 1000);
+}
 
 function getPilihanKomputer() {
   // Tangkap Inputan Komputer
@@ -105,7 +104,6 @@ pPlayer.forEach(function (play) {
     const hasil = getHasil(pilkom, pilplay);
 
     putar();
-    mulai();
     setTimeout(function () {
       info.style.backgroundColor = "white";
       info.innerHTML = hasil;
