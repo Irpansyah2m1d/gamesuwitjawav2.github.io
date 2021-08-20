@@ -18,11 +18,11 @@ function getHasil(komp, player) {
 function putar() {
   const imgKomputer = document.querySelector(".img-komputer");
   const info = document.querySelector(".info");
-  const akomp = document.querySelector("div.area-komputer");
+  const akomp = document.querySelector(".container div.area-komputer");
   const gambar = ["gajah", "semut", "orang"];
   const aHasil = ["MENANG", "KALAH", "SERI"];
-  const wrandom = ["red", "green", "blue", "yellow"];
-  const wak = ["grey", "lightgreen", "lightblue", "yellow"];
+  const wrandom = ["red", "lightgreen", "blue", "yellow", "lightblue"];
+  const wak = ["red", "green", "blue", "yellow"];
 
   let i = 0;
   let h = 0;
@@ -46,25 +46,86 @@ function putar() {
   }, 80);
 }
 
+// function score(itu) {
+//   // const pilkom = getPilihanKomputer();
+//   // const pilplay = play.className;
+//   // const hasil = getHasil(pilkom, pilplay);
+//   let pScore = 0;
+//   let kScore = 0;
+//   if (itu == "MENANG") {
+//     pScore++;
+//     // console.log("Score Komputer : " + kScore);
+//   } else if (itu == "KALAH") {
+//     kScore++;
+//   } else {
+//     pScore = pScore + 0;
+//     kScore = kScore + 0;
+//   }
+
+//   console.log(pScore);
+//   console.log(kScore);
+
+//   // setInterval(score, 80);
+//   // clearInterval;
+// }
+
 const pPlayer = document.querySelectorAll(".area-player ul li img");
 const info = document.querySelector(".info");
-// const audio = document.querySelector("audio");
+let pScore = 0;
+let kScore = 0;
 
 pPlayer.forEach(function (play) {
   play.addEventListener("click", function () {
-    // audio.setAttribute("controls", "on");
     const pilkom = getPilihanKomputer();
     const pilplay = play.className;
+    const hasil = getHasil(pilkom, pilplay);
+
     putar();
     setTimeout(function () {
       info.style.backgroundColor = "white";
-      info.innerHTML = getHasil(pilkom, pilplay);
-      //   const tHasil = document.createTextNode(getHasil(pilkom, pilplay));
+      info.innerHTML = hasil;
+
       const imgKomputer = document.querySelector(".img-komputer");
       imgKomputer.setAttribute("src", "img/" + pilkom + ".png");
+      const pilplay = play.className;
+
+      if (hasil == "MENANG") pScore++;
+      if (hasil == "KALAH") kScore++;
+
+      const getScorePlayer = document.querySelector(".score-player h2");
+      getScorePlayer.innerHTML = pScore;
+      const getScoreKomputer = document.querySelector(".score-komputer h2");
+      getScoreKomputer.innerHTML = kScore;
+
+      console.log(pScore);
+      console.log(kScore);
     }, 2000);
   });
 });
+
+// pPlayer.forEach((coba) => {
+//   coba.addEventListener("click", function () {
+//     const pilkom = getPilihanKomputer();
+//     const pilplay = coba.className;
+//     const hasil = getHasil(pilkom, pilplay);
+
+//     score(hasil);
+//   });
+// });
+
+// const hasil = getHasil(pilkom, pilplay);
+
+// let scorePlayer = 0;
+// let scoreKomputer = 0;
+// if (hasil === "MENANG") scorePlayer++;
+// if (hasil === "KALAH") scoreKomputer++;
+
+// score
+
+// let scorePlayer = 0;
+// let scoreKomputer = 0;
+
+// if
 
 // const pGajah = document.querySelector(".gajah");
 // const pOrang = document.querySelector(".orang");

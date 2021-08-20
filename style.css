@@ -183,7 +183,7 @@ h1 {
 .info {
   width: 150px;
   height: 60px;
-  border: 5px solid salmon;
+  border: 5px solid rgb(255, 25, 0);
   position: absolute;
   left: 50%;
   margin-left: -75px;
@@ -197,6 +197,72 @@ h1 {
   color: #f89bb4;
   font-size: 26px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+.score-komputer {
+  width: 65px;
+  height: 45px;
+  border: 3px solid rgb(132, 241, 151);
+  position: absolute;
+  left: 29%;
+  margin-left: -75px;
+  top: 50%;
+  margin-top: -25px;
+  background-color: white;
+  border-radius: 30px;
+  z-index: 1;
+  /* text-align: center;
+  line-height: 60px;
+  color: #f89bb4;
+  font-size: 26px; */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.score-komputer h5 {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.score-komputer h2 {
+  font-size: 25px;
+  text-align: center;
+  margin-top: 3px;
+  font-weight: bold;
+}
+.score-player {
+  width: 60px;
+  height: 40px;
+  border: 3px solid rgb(0, 255, 221);
+  position: absolute;
+  left: 85%;
+  margin-left: -75px;
+  top: 50%;
+  margin-top: -25px;
+  background-color: white;
+  border-radius: 30px;
+  z-index: 1;
+  /* text-align: center;
+  line-height: 60px;
+  color: #f89bb4;
+  font-size: 26px; */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.score-player h5 {
+  font-size: 10px;
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.score-player h2 {
+  font-size: 25px;
+  text-align: center;
+  margin-top: 3px;
+  font-weight: bold;
 }
 
 ul {
