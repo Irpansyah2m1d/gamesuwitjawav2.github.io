@@ -1,3 +1,10 @@
+// let cek = true;
+// while (cek) {
+
+// if (waktu() === false) {
+//   alert("gagal");
+// }
+
 const awal = new Date(0).getTime();
 const tujuan = new Date(300000).getTime();
 
@@ -8,6 +15,9 @@ const tStart = document.querySelector(".mulai span.tmulai");
 tStart.addEventListener("click", mulai);
 
 function mulai() {
+  const sound = new Audio("lagu1.mp3");
+  sound.play();
+  sound.play();
   const container = document.getElementsByClassName("container");
   const h1 = document.getElementById("icon");
   const alert = document.querySelector(".alert");
@@ -17,6 +27,7 @@ function mulai() {
   h1.classList.remove("blur");
   container[0].classList.remove("blur");
   waktu();
+  // console.log(waktu());
 }
 
 function waktu() {
@@ -30,6 +41,14 @@ function waktu() {
       clearInterval(hitung);
       // console.log("waktu habis");
       alert("Waktu Anda Habis!!!");
+      alert("Score Komputer : " + kScore);
+      alert("Score Player : " + pScore);
+      if (kScore < pScore) {
+        alert("Selamat Anda Memenangkan Game ini");
+      } else {
+        alert("Sayang Sekali Anda KALAH (:");
+      }
+      return false;
       // let cek = confirm("Mau Main Lagi?");
 
       // if (cek === true) {
@@ -120,11 +139,14 @@ pPlayer.forEach(function (play) {
       const getScoreKomputer = document.querySelector(".score-komputer h2");
       getScoreKomputer.innerHTML = kScore;
 
-      console.log(pScore);
-      console.log(kScore);
+      // console.log(pScore);
+      // console.log(kScore);
     }, 2000);
   });
 });
+// }
+
+// cek = confirm("Mau Main Lagi?");
 
 // const waktuMulai = new Date("Mar 8, 2021 10:00:00").getTime();
 // waktuTujuan = new Date("Mar 8, 2021 10:05:00");
